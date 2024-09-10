@@ -6,6 +6,7 @@ async function createTimetable(req, res) {
     const result = await Timetable.generateTimetable(weekStart, weekEnd); // Call the function to generate shifts
     res.json(result); // Return a response to the client (frontend)
   } catch (error) {
+    console.log(error);
     res.status(500).json({ message: "Server error", error });
   }
 }
