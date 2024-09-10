@@ -10,6 +10,7 @@ import confirmReplacement from "../controllers/timetables/confirmReplacement.js"
 import getShifts from "../controllers/timetables/getShifts.js";
 import deleteShift from "../controllers/timetables/deleteShift.js";
 import getAllShifts from "../controllers/timetables/getAllShifts.js";
+import addNewWard from "../controllers/timetables/addNewWard.js";
 
 const router = Router();
 
@@ -26,6 +27,7 @@ router.post(
   createTimetable
 );
 router.get("/timetables/week", isAuth, getShifts);
+router.post("/leaderDashboard/ward", isAuth, roleCheck("Leader"), addNewWard);
 router.get("/ho-shifts/:username", isAuth, roleCheck("Leader"), getAllShifts);
 router.put("/edit-shift/:shiftId", isAuth, roleCheck("Leader"), updateShift);
 router.delete(
